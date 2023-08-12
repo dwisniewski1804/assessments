@@ -5,6 +5,7 @@ namespace App\Domain\Core\Entity;
 use App\Domain\Core\Exception\ContractNotFoundException;
 use App\Domain\Core\Exception\SupervisorDoesNotHaveAuthorityException;
 use Exception;
+use Symfony\Component\Uid\Uuid;
 
 class Supervisor
 {
@@ -14,7 +15,7 @@ class Supervisor
         return in_array($standard->id, $this->authorities);
     }
 
-    public function evaluate(Client $client, Standard $standard, $rating) {
+    public function evaluate(Uuid $id, Client $client, Standard $standard, int $rating) {
         if (!$client->hasActiveContractWith($this)) {
             throw new ContractNotFoundException;
         }
@@ -23,7 +24,7 @@ class Supervisor
             throw new SupervisorDoesNotHaveAuthorityException;
         }
 
-        $assessment = new Assessment($this, $client, $standard, $rating);
+        $assessment = new Assessment($id, $this, $client, $standard, $rating);
         $client->addAssessment($assessment);
 
         return $assessment;
