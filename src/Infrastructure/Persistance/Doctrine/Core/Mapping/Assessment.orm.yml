@@ -1,0 +1,11 @@
+App\Domain\Core\Assessment:
+  type: entity
+  repositoryClass: App\Infrastructure\Persistance\Doctrine\Core\Repository\DoctrineAssessmentRepository
+  table: assessment
+  id:
+    id:
+      type: uuid
+      unique: true
+  fields:
+    date:
+      type: date
