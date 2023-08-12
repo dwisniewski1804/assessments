@@ -2,20 +2,19 @@
 
 namespace App\Domain\Core\Entity;
 
+use App\Domain\Core\Entity\Enum\LockType;
+
 class Lock
 {
-    const TYPE_SUSPENDED = 'suspended';
-    const TYPE_WITHDRAWN = 'withdrawn';
-
-    private string $type;
+    private LockType $type;
     private string $description;
 
-    public function __construct(string $type, string $description) {
+    public function __construct(LockType $type, string $description) {
         $this->type = $type;
         $this->description = $description;
     }
 
-    public function getType(): string
+    public function getType(): LockType
     {
         return $this->type;
     }

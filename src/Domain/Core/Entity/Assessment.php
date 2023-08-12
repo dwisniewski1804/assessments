@@ -2,6 +2,7 @@
 
 namespace App\Domain\Core\Entity;
 
+use App\Domain\Core\Entity\Enum\LockType;
 use App\Domain\Core\Exception\ExpiredAssessmentCanNotBeLocked;
 use DateTime;
 
@@ -30,7 +31,7 @@ class Assessment
         return (new DateTime()) > $expirationDate;
     }
 
-    public function lock(string $type, string $description): self {
+    public function lock(LockType $type, string $description): self {
 
         if ($this->isExpired()) {
             throw new ExpiredAssessmentCanNotBeLocked;
