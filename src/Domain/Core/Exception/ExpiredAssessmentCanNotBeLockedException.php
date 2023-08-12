@@ -4,7 +4,7 @@ namespace App\Domain\Core\Exception;
 
 use Exception;
 
-class ExpiredAssessmentCanNotBeLocked extends Exception
+class ExpiredAssessmentCanNotBeLockedException extends Exception
 {
 
 }

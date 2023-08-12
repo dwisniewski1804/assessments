@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Core\Entity;
+namespace App\Domain\Core\ObjectValue;
 
 use App\Domain\Core\Entity\Enum\LockType;
 
